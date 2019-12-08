@@ -19,7 +19,7 @@ class MyFavorite extends StatelessWidget{
           ),
         ),
         child: Center(
-          child: Text('dasddd'),
+          child: Text('dasd'),
         )
       ),
     );

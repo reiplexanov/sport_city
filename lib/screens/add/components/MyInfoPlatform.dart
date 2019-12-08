@@ -1,22 +1,57 @@
 import 'package:flutter/material.dart';
+import 'package:sportcity/function/MyChangeTag.dart';
 
 class MyInfoPlatform extends StatefulWidget {
 
+  MyInfoPlatform({Key key, this.info}) : super(key:key);
+
+  String info;
 
   @override
   _MyInfoPlatform createState() => _MyInfoPlatform();
 }
 
 class _MyInfoPlatform extends State<MyInfoPlatform>{
+
+  final _controller = TextEditingController();
+
+  String tag = '';
+
+  void initState(){
+    super.initState();
+    
+    _controller.addListener(changeText);
+  }
+
+  void dispose() {
+  _controller.dispose();
+  super.dispose();
+  }
+
+  changeText(){
+
+    String text = _controller.text;
+    this.tag = '';
+    for (int i = 0;i< text.length;i++ ){
+        if (text[i] == '#' ){
+          this.tag = this.tag + text.substring(text.indexOf('#',i),text.indexOf(' ',i)) + ' ';
+        }
+       // print(' tag = '+tag.replaceAll('#', ''));
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    return Column(
+      children: <Widget>[
+        Padding(
       padding: EdgeInsets.only(
         left: 10,
         right: 10
       ),
       child: Container(
         child: TextFormField(
+        controller: _controller,
         maxLines: 6,
         minLines: 6,
         style: TextStyle(
@@ -26,7 +61,7 @@ class _MyInfoPlatform extends State<MyInfoPlatform>{
         keyboardType: TextInputType.multiline,
         // textAlign: TextAlign.center,
         autofocus: true,
-        initialValue: '',
+        // initialValue: '',
         decoration:
           InputDecoration(
             enabledBorder: OutlineInputBorder(
@@ -48,6 +83,11 @@ class _MyInfoPlatform extends State<MyInfoPlatform>{
           ),
         ),
       ),
-    );
+    ),
+    Text(
+      'my tag: $tag'
+    )
+    ],
+  );
   }
 }

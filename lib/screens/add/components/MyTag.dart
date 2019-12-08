@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tags/tag.dart';
+import 'package:sportcity/function/MyChangeTag.dart';
 
 class MyTag extends StatefulWidget{
 
@@ -14,11 +15,12 @@ class MyTag extends StatefulWidget{
 
 class _MyTag extends State<MyTag> {
 
+  String text = MyChangeTag().ttext;
 
   @override
   Widget build(BuildContext context) {
     return Text(
-      widget.tag
+      MyChangeTag().getalltag()
     );
   }
 }
