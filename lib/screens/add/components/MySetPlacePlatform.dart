@@ -15,7 +15,21 @@ class _MySetPlacePlatform extends State<MySetPlacePlatform> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Text(widget.geo),
+      child: Row(
+        children: <Widget>[
+          Text(
+            widget.geo,
+            style: TextStyle(color: Colors.blue,fontSize: 18),
+          ),
+          IconButton(
+            icon: Icon(Icons.map),
+            color: Colors.blue,
+            onPressed: (){
+              print('object');
+            },
+          )
+        ],
+      ),
     );
   }
 }

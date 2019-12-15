@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:sportcity/function/MyChangeTag.dart';
 import 'package:sportcity/screens/add/components/MyCreateNameDate.dart';
 import 'package:sportcity/screens/add/components/MyImagePicker.dart';
 import 'package:sportcity/screens/add/components/MyInfoPlatform.dart';
@@ -40,7 +39,7 @@ class _MyAdd extends State<MyAdd>{
           MyInfoPlatform(info: tag,),
           // MyTag(tag:tag,),
           MySetPlacePlatform(geo: 'Tymen.vosto4ka',),
-          SizedBox(height: 150,),
+          SizedBox(height: 125,),
           FlatButton(
             color: Colors.blue,
             textColor: Colors.white,

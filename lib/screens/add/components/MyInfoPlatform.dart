@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:sportcity/function/MyChangeTag.dart';
 
 class MyInfoPlatform extends StatefulWidget {
 
@@ -85,7 +84,8 @@ class _MyInfoPlatform extends State<MyInfoPlatform>{
       ),
     ),
     Text(
-      'my tag: $tag'
+      'my tag: $tag',
+      style: TextStyle(color: Colors.blue, fontSize: 18),
     )
     ],
   );
