@@ -28,14 +28,17 @@ class _MyInfoPlatform extends State<MyInfoPlatform>{
   }
 
   changeText(){
+    /*
+    хуйня не работает как надо 
+    */
 
     String text = _controller.text;
     this.tag = '';
     for (int i = 0;i< text.length;i++ ){
-        if (text[i] == '#' ){
+        if (text[i] == '#'){
+          print(this.tag);
           this.tag = this.tag + text.substring(text.indexOf('#',i),text.indexOf(' ',i)) + ' ';
         }
-       // print(' tag = '+tag.replaceAll('#', ''));
     }
   }
 
