@@ -5,7 +5,11 @@ import 'package:image_picker/image_picker.dart';
 
 class MyImagePicker extends StatefulWidget{
 
-   @override
+  MyImagePicker({Key key,this.sizeScreen}):super(key:key);
+
+  final sizeScreen;
+
+  @override
   _MyImagePicker createState() => _MyImagePicker();
 }
 
@@ -23,34 +27,32 @@ class  _MyImagePicker extends State<MyImagePicker> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.all(8.0),
+    return GestureDetector(
+      onTap: ()=>{
+        getImage()
+      },
       child: Container(
-        width: 150,
-        height: 150,
+        width: widget.sizeScreen.width / 2 - 48,
+        height: widget.sizeScreen.height * 0.2,
         decoration: BoxDecoration(
             image: (
               DecorationImage(
                 image:
                 _image == null
-                ? NetworkImage('https://sun9-7.userapi.com/c852032/v852032391/1c5c3d/VE_Ri-1DvkY.jpg')
-                : FileImage(_image)
-                , 
+                ? ExactAssetImage('assets/images/addphoto2.png')
+                : FileImage(_image), 
                 fit: BoxFit.cover 
               )
+            ),
+            border: Border.all(
+              width: 3.5,
+              color: Colors.blue
             ),
             borderRadius: BorderRadius.all(
               Radius.circular(15.0)
             )
         ),
-        child: IconButton(
-            icon: new Icon(
-              Icons.add,
-              color: Colors.white,
-            ),
-            onPressed: getImage,
-        ),
-        alignment: Alignment(1.2,1.2),
+        child: null
       ),
     );
   }

@@ -3,8 +3,14 @@ import 'package:flutter/material.dart';
 
 class MyCreateNameDate extends StatefulWidget{
 
-  MyCreateNameDate ({Key key,this.name,this.date}) : super (key:key);
+  MyCreateNameDate ({
+    Key key,
+    this.name,
+    this.sizeScreen,
+    this.date,
+    }) : super (key:key);
 
+  final sizeScreen;
   final String name;
   final String date;
 
@@ -18,10 +24,10 @@ class _MyCreateNameDate extends State<MyCreateNameDate> {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Padding(
-      padding: EdgeInsets.all(8.0),
+      padding: EdgeInsets.all(0),
       child: Container(
-        width: 220,
-        height: 170,
+        width: widget.sizeScreen.width / 2 + 16,
+        height: widget.sizeScreen.height * 0.2,
         child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -45,7 +51,7 @@ class _MyCreateNameDate extends State<MyCreateNameDate> {
               style: TextStyle(color: Colors.blue),
               keyboardType: TextInputType.text,
               textAlign: TextAlign.center,
-              autofocus: true,
+              // autofocus: true,
               initialValue: '',
               decoration: 
                 InputDecoration(

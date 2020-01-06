@@ -2,8 +2,13 @@ import 'package:flutter/material.dart';
 
 class MyInfoPlatform extends StatefulWidget {
 
-  MyInfoPlatform({Key key, this.info}) : super(key:key);
+  MyInfoPlatform({
+    Key key, 
+    this.info,
+    this.sizeScreen
+  }) : super(key:key);
 
+  final sizeScreen;
   String info;
 
   @override
@@ -32,14 +37,14 @@ class _MyInfoPlatform extends State<MyInfoPlatform>{
     хуйня не работает как надо 
     */
 
-    String text = _controller.text;
-    this.tag = '';
-    for (int i = 0;i< text.length;i++ ){
-        if (text[i] == '#'){
-          print(this.tag);
-          this.tag = this.tag + text.substring(text.indexOf('#',i),text.indexOf(' ',i)) + ' ';
-        }
-    }
+    // String text = _controller.text;
+    // this.tag = '';
+    // for (int i = 0;i< text.length;i++ ){
+    //     if (text[i] == '#'){
+    //       print(this.tag);
+    //       this.tag = this.tag + text.substring(text.indexOf('#',i),text.indexOf(' ',i)) + ' ';
+    //     }
+    // }
   }
 
   @override
@@ -48,22 +53,21 @@ class _MyInfoPlatform extends State<MyInfoPlatform>{
       children: <Widget>[
         Padding(
       padding: EdgeInsets.only(
-        left: 10,
-        right: 10
+        left: 16,
+        right: 16
       ),
       child: Container(
+        height: widget.sizeScreen.height / 5,
         child: TextFormField(
         controller: _controller,
-        maxLines: 6,
-        minLines: 6,
+        maxLines: 8,
+        minLines: 8,
         style: TextStyle(
           color: Colors.blue,
           fontSize: 18
         ),
         keyboardType: TextInputType.multiline,
-        // textAlign: TextAlign.center,
-        autofocus: true,
-        // initialValue: '',
+        // autofocus: true,
         decoration:
           InputDecoration(
             enabledBorder: OutlineInputBorder(
@@ -77,8 +81,6 @@ class _MyInfoPlatform extends State<MyInfoPlatform>{
             labelStyle: TextStyle(color: Colors.blue ,fontSize: 25),
             filled: true,
             fillColor: Colors.white,
-            // hintStyle: TextStyle(color: Colors.blue),
-            // hintText: 'Описание',
             counterText: "",
             contentPadding: EdgeInsets.fromLTRB(25.0, 25.0, 20.0, 10.0),
             border: OutlineInputBorder(borderRadius: BorderRadius.circular(10.0)),
@@ -86,10 +88,6 @@ class _MyInfoPlatform extends State<MyInfoPlatform>{
         ),
       ),
     ),
-    Text(
-      'my tag: $tag',
-      style: TextStyle(color: Colors.blue, fontSize: 18),
-    )
     ],
   );
   }

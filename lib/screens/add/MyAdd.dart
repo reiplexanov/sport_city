@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:sportcity/screens/add/components/MyCreateNameDate.dart';
+import 'package:sportcity/screens/add/components/MyCreateRating.dart';
 import 'package:sportcity/screens/add/components/MyImagePicker.dart';
 import 'package:sportcity/screens/add/components/MyInfoPlatform.dart';
+import 'package:sportcity/screens/add/components/MyPickTag.dart';
 import 'package:sportcity/screens/add/components/MySetPlacePlatform.dart';
-import 'package:sportcity/screens/add/components/MyTag.dart';
+
 
 
 class MyAdd extends StatefulWidget{
@@ -18,7 +20,6 @@ class MyAdd extends StatefulWidget{
 
 class _MyAdd extends State<MyAdd>{
 
-  String tag ='';
 
   @override
   Widget build(BuildContext context) {
@@ -29,31 +30,66 @@ class _MyAdd extends State<MyAdd>{
         title: Text('Добавление'),
       ),
       body:  Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          Row(
+          Column(
             children: <Widget>[
-              MyImagePicker(),
-              MyCreateNameDate(name: 'rei',date: '09.09.2019 pm 9:19',),
+              Padding(
+              padding: EdgeInsets.all(16),
+                child: Row(
+                children: <Widget>[
+                  MyImagePicker(sizeScreen: MediaQuery.of(context).size),
+                  MyCreateNameDate(
+                    name: 'rei',
+                    date: '09.09.2019 pm 9:19',
+                    sizeScreen: MediaQuery.of(context).size,
+                  ),
+                ],
+              ),
+            ),
+            MyInfoPlatform(
+              info: '',
+              sizeScreen: MediaQuery.of(context).size,
+            ),
+            // MySetPlacePlatform(geo: 'Tymen.vosto4ka',),
+           
             ],
           ),
-          MyInfoPlatform(info: tag,),
-          // MyTag(tag:tag,),
-          MySetPlacePlatform(geo: 'Tymen.vosto4ka',),
-          SizedBox(height: 125,),
-          FlatButton(
-            color: Colors.blue,
-            textColor: Colors.white,
-            disabledColor: Colors.grey,
-            disabledTextColor: Colors.black,
-            padding: EdgeInsets.all(8.0),
-            splashColor: Colors.blueAccent,
-            onPressed: () {
-              print('');
-            },
-            child: Text(
-              "Flat Button",
-              style: TextStyle(fontSize: 20.0),
+          MyPickTag(),
+          MySetPlacePlatform(geo: 'Tymen:Motorostroiteli 12',),
+          Column(children: <Widget>[
+          Text(
+            'оценка',
+            style: TextStyle(color: Colors.blue,fontSize: 18),
+          ),
+          MyCreateRating(),
+          
+          Padding(
+            padding: EdgeInsets.all(16),
+            child: Container(
+              width: MediaQuery.of(context).size.width - 32,
+              height: 60,
+              child: FlatButton(
+                shape: RoundedRectangleBorder(
+                   borderRadius: BorderRadius.circular(30.0),
+                ),
+                color: Colors.blue,
+                textColor: Colors.white,
+                disabledColor: Colors.grey,
+                disabledTextColor: Colors.black,
+                padding: EdgeInsets.all(8.0),
+                splashColor: Colors.blueAccent,
+                onPressed: () {
+                  print('');
+                },
+                child: Text(
+                  "Готово",
+                  style: TextStyle(fontSize: 20.0),
+                ),
+              ),
             ),
+          )
+            ],
           ),
         ],
       ),

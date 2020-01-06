@@ -16,17 +16,24 @@ class _MySetPlacePlatform extends State<MySetPlacePlatform> {
   Widget build(BuildContext context) {
     return Container(
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: <Widget>[
           Text(
             widget.geo,
             style: TextStyle(color: Colors.blue,fontSize: 18),
           ),
-          IconButton(
-            icon: Icon(Icons.map),
+          FlatButton(
             color: Colors.blue,
-            onPressed: (){
-              print('object');
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(25.0),
+            ),
+            onPressed: ()=>{
+              print('object')
             },
+            child: Text(
+              'Выбрать',
+              style: TextStyle(color: Colors.white,fontSize: 16),
+            ),
           )
         ],
       ),
