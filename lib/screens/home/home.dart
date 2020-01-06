@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:sportcity/function/MyPushDate.dart';
-import 'package:sportcity/screens/add/MyAdd.dart';
+import 'package:sportcity/components/My_Tag.dart';
+import 'package:sportcity/components/My_box.dart';
+import 'package:sportcity/screens/home/components/MyBottomButtonBar.dart';
 import 'package:sportcity/screens/home/components/MyDrawer.dart';
 import 'package:sportcity/screens/home/list/Mylist.dart';
 import 'package:sportcity/screens/home/maps/MyMaps.dart';
@@ -28,7 +29,7 @@ class _MyHomePageState extends State<HomePage>  {
     if (user.getname() != 'name') return;
     await new Future.delayed(Duration(seconds: 1));
     setState(() {
-      print('data');
+      // print('data');
     });
   }
 
@@ -36,38 +37,74 @@ class _MyHomePageState extends State<HomePage>  {
   Widget build(BuildContext context) {
      _updatedate();
         return new Scaffold(
-          appBar: new AppBar(
-            title: new Text('Sport Tymen'),
-            actions: <Widget>[
-              IconButton(
-                icon: Icon(Icons.map),
-                onPressed: (){
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context)=>MyMpas())
-                  );
-                },
+          drawer: MyDrawer(name: user.getname(), image: user.getimage(),),
+          body:Stack(
+            children: <Widget>[
+            CustomScrollView(
+            slivers: <Widget>[
+              SliverAppBar(
+                iconTheme: new IconThemeData(color: Colors.blue),
+                backgroundColor: Colors.transparent,
+                title: Text(
+                  'Тюмень',
+                  style: TextStyle(color: Colors.blue),
+                ),
+                actions: <Widget>[
+                  IconButton(
+                    icon: Icon(
+                      Icons.map,
+                      color: Colors.blue,
+                    ),
+                    onPressed: (){
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context)=>MyMpas())
+                      );
+                    },
+                  ),
+                ],
               ),
-              IconButton(
-                icon: Icon(Icons.search),
-                onPressed: (){
-                  print('object');
-                },
-              )
+              SliverToBoxAdapter(
+                child: SizedBox(
+                  height: 150,
+                  child: ListView.builder(
+                    itemExtent: 150,
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context,index)=>My_Tag(
+                      name: 'items $index'
+                    ),
+                    itemCount: 5,
+                  ),
+                ),
+              ),
+              SliverToBoxAdapter(
+                  child: Container(
+                    margin:const EdgeInsets.only(bottom: 5, top: 5), 
+                    // color: Colors,
+                    // height:2,
+                  )
+                ),
+              SliverGrid(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  childAspectRatio: 0.7,
+                ),
+                delegate: SliverChildBuilderDelegate(
+                  (context,index)=>My_box(
+                  onPressed:  ()=>{
+                    print('erw $index')
+                  },
+                  title: 'sadad',
+                  image: Image.network(''),
+                )
+                ),
+              ),
+              
             ],
           ),
-          drawer: MyDrawer(name: user.getname(), image: user.getimage(),),
-          floatingActionButton: new FloatingActionButton(
-            onPressed:()=>{
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context)=>MyAdd())
-              )
-            },
-            child: Icon(Icons.add),
-          ),
-          body: MyList(),
+          MyBottomButtonBar(),
+            ],
+          )
     );
   }
 }
-
