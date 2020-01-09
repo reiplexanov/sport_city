@@ -80,7 +80,7 @@ class _MyHomePageState extends State<HomePage>  {
               height: MediaQuery.of(context).size.height * 0.009,
             ),
             SizedBox (
-              height: MediaQuery.of(context).size.height * 0.5,
+              height: MediaQuery.of(context).size.height * 0.48,
               child: MyCardList(),
             ),
             SizedBox(
