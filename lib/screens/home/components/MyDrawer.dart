@@ -26,12 +26,7 @@ class _MyDrawer extends State<MyDrawer>{
   @override
   Widget build(BuildContext context) {
 
-    final screenSize = MediaQuery.of(context).size;
-    final w = screenSize.width;
-    final h = screenSize.height;
-
-    print(w);
-    print(h);
+    
 
     return new Drawer(
       child: ListView(

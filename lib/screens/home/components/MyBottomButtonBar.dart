@@ -7,11 +7,11 @@ class MyBottomButtonBar extends StatelessWidget{
     return Align(
       alignment: Alignment.bottomCenter,
       child: Padding(
-        padding: EdgeInsets.all(16),
+        padding: EdgeInsets.only(left: 16,right: 16),
         child: Container(
           // color: Colors.blue,
           width: MediaQuery.of(context).size.width,
-          height: 55,
+          // height: 55,
           child: Row(
             children: <Widget>[
               Container(

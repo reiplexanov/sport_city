@@ -153,7 +153,7 @@ class MyInfo extends StatelessWidget{
             )
           ],
         ),
-        ) 
+      ) 
     );
   }
 }

@@ -39,7 +39,7 @@ class  _MyImagePicker extends State<MyImagePicker> {
               DecorationImage(
                 image:
                 _image == null
-                ? ExactAssetImage('assets/images/addphoto2.png')
+                ? ExactAssetImage('assets/images/add/addphoto2.png')
                 : FileImage(_image), 
                 fit: BoxFit.cover 
               )

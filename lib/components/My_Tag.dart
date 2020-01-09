@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class My_Tag extends StatefulWidget{
 
   final String name;
-  final Image img;
+  final String img;
   var pick = false;
   final Function onPressed;
 
@@ -26,35 +26,48 @@ class _My_Tag extends State<My_Tag>{
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(5),
-      child: Stack(
-        children: <Widget>[
-          Container(  
-            width: 150,
-            height: 150,
+      padding: EdgeInsets.only(left: 5,right: 5),
+      child: Container(
+        height: MediaQuery.of(context).size.height * 0.2,
+        width: MediaQuery.of(context).size.height * 0.2,
             decoration: BoxDecoration(
+              color: Colors.white,
               border: Border.all(
-                width: 1,
-                color: Colors.white
+              width: 2.5,
+              color: Colors.white
               ),
               borderRadius: BorderRadius.circular(15),
-              image: (
-                DecorationImage(
-                  image: NetworkImage('https://sun9-9.userapi.com/c855228/v855228760/1bed5f/W_hUjAbNl_w.jpg'),
-                  fit: BoxFit.cover
+            ),
+            child:Column(
+              children: <Widget>[
+               SizedBox(
+                 height:(MediaQuery.of(context).size.height * 0.2) * 0.9 -5 ,
+                 child: Container(
+              decoration: BoxDecoration(
+                image: (
+                  DecorationImage(
+                    image: new AssetImage(widget.img),
+                    fit: BoxFit.cover
+                  )
                 )
-              )
-            ),
-          ),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: Text(
-              widget.name,
-              style: TextStyle(color: Colors.white,fontSize: 18),
-            ),
-          )
-        ],
-      ),
+              ),
+                 )
+               ), 
+               SizedBox(
+                 height: (MediaQuery.of(context).size.height * 0.2)*0.1,
+                 child: FittedBox(
+                  fit: BoxFit.fitWidth,
+                  child:
+                   Text(
+                    widget.name,
+                    style: TextStyle(color: Colors.blue,fontSize: 18),
+                  ),
+                ),
+               )
+              ],
+            ) 
+      )
+  
     );
   }
 }

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:sportcity/components/My_Tag.dart';
-import 'package:sportcity/components/My_box.dart';
+
 import 'package:sportcity/screens/home/components/MyBottomButtonBar.dart';
+import 'package:sportcity/screens/home/components/MyButtonBar.dart';
 import 'package:sportcity/screens/home/components/MyDrawer.dart';
-import 'package:sportcity/screens/home/list/Mylist.dart';
+import 'package:sportcity/screens/home/components/MyNameAndMapNav.dart';
+import 'package:sportcity/screens/home/list/MyCardList.dart';
+import 'package:sportcity/screens/home/list/MyTagList.dart';
 import 'package:sportcity/screens/home/maps/MyMaps.dart';
 import 'package:sportcity/utils/firebase_auth.dart';
 
@@ -37,74 +39,59 @@ class _MyHomePageState extends State<HomePage>  {
   Widget build(BuildContext context) {
      _updatedate();
         return new Scaffold(
+          backgroundColor:  Color(0xfff2f2f2),
           drawer: MyDrawer(name: user.getname(), image: user.getimage(),),
-          body:Stack(
-            children: <Widget>[
-            CustomScrollView(
-            slivers: <Widget>[
-              SliverAppBar(
-                iconTheme: new IconThemeData(color: Colors.blue),
-                backgroundColor: Colors.transparent,
-                title: Text(
-                  'Тюмень',
-                  style: TextStyle(color: Colors.blue),
+          appBar: AppBar(
+            title: Text("Тюмень"),
+            actions: <Widget>[
+            IconButton(
+                icon: Icon(
+                  Icons.map,
+                  color: Colors.blue,
                 ),
-                actions: <Widget>[
-                  IconButton(
-                    icon: Icon(
-                      Icons.map,
-                      color: Colors.blue,
-                    ),
-                    onPressed: (){
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context)=>MyMpas())
-                      );
-                    },
-                  ),
-                ],
+                onPressed: (){
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context)=>MyMpas())
+                  );
+                },
               ),
-              SliverToBoxAdapter(
-                child: SizedBox(
-                  height: 150,
-                  child: ListView.builder(
-                    itemExtent: 150,
-                    scrollDirection: Axis.horizontal,
-                    itemBuilder: (context,index)=>My_Tag(
-                      name: 'items $index'
-                    ),
-                    itemCount: 5,
-                  ),
-                ),
-              ),
-              SliverToBoxAdapter(
-                  child: Container(
-                    margin:const EdgeInsets.only(bottom: 5, top: 5), 
-                    // color: Colors,
-                    // height:2,
-                  )
-                ),
-              SliverGrid(
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  childAspectRatio: 0.7,
-                ),
-                delegate: SliverChildBuilderDelegate(
-                  (context,index)=>My_box(
-                  onPressed:  ()=>{
-                    print('erw $index')
-                  },
-                  title: 'sadad',
-                  image: Image.network(''),
-                )
-                ),
-              ),
-              
             ],
           ),
-          MyBottomButtonBar(),
-            ],
-          )
+          body: ListView(
+          children: <Widget>[
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.06,
+              child:MyNameAndMapNav(),
+            ),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.2,
+              child:MyTagList(),
+            ),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.009,
+            ),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.05,
+              width:  MediaQuery.of(context).size.width,
+              child: MyButtonBar(),
+            ),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.009,
+            ),
+            SizedBox (
+              height: MediaQuery.of(context).size.height * 0.5,
+              child: MyCardList(),
+            ),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.009,
+            ),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.06,
+              child: MyBottomButtonBar(),
+            ),
+          ],
+        ),
     );
   }
 }

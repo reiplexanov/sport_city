@@ -5,6 +5,7 @@ import 'package:sportcity/screens/add/components/MyImagePicker.dart';
 import 'package:sportcity/screens/add/components/MyInfoPlatform.dart';
 import 'package:sportcity/screens/add/components/MyPickTag.dart';
 import 'package:sportcity/screens/add/components/MySetPlacePlatform.dart';
+import 'package:sportcity/screens/home/list/MyTagList.dart';
 
 
 
@@ -55,7 +56,10 @@ class _MyAdd extends State<MyAdd>{
            
             ],
           ),
-          MyPickTag(),
+          SizedBox(
+            height: 165,
+            child:MyTagList() ,
+          ),
           MySetPlacePlatform(geo: 'Tymen:Motorostroiteli 12',),
           Column(children: <Widget>[
           Text(

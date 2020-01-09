@@ -23,7 +23,7 @@ class _MyPickTag extends State<MyPickTag> {
         itemBuilder: (context,index)=>My_Tag(
           name: 'asdsa',
         ),
-        itemCount: 5,
+        itemCount: 12,
       ),
     );
   }
