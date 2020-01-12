@@ -5,9 +5,6 @@ import 'package:image_picker/image_picker.dart';
 
 class MyImagePicker extends StatefulWidget{
 
-  MyImagePicker({Key key,this.sizeScreen}):super(key:key);
-
-  final sizeScreen;
 
   @override
   _MyImagePicker createState() => _MyImagePicker();
@@ -32,8 +29,8 @@ class  _MyImagePicker extends State<MyImagePicker> {
         getImage()
       },
       child: Container(
-        width: widget.sizeScreen.width / 2 - 48,
-        height: widget.sizeScreen.height * 0.2,
+        width: MediaQuery.of(context).size.width / 2.5,
+        height:MediaQuery.of(context).size.width / 2.5,
         decoration: BoxDecoration(
             image: (
               DecorationImage(
@@ -41,7 +38,7 @@ class  _MyImagePicker extends State<MyImagePicker> {
                 _image == null
                 ? ExactAssetImage('assets/images/add/addphoto2.png')
                 : FileImage(_image), 
-                fit: BoxFit.cover 
+                fit: BoxFit.fill 
               )
             ),
             border: Border.all(

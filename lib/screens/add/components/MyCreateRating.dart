@@ -56,7 +56,13 @@ class _MyCreateRating extends State<MyCreateRating>{
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return Column(
+      children: <Widget>[
+      Text(
+        'оценка',
+        style: TextStyle(color: Colors.blue,fontSize: 18),
+      ),       
+      Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         IconButton(
@@ -94,6 +100,8 @@ class _MyCreateRating extends State<MyCreateRating>{
           },
         ),
       ],
-    );
+      )
+      ],
+    ); 
   }
 }

@@ -14,14 +14,18 @@ class _MySetPlacePlatform extends State<MySetPlacePlatform> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Padding(
+      padding: EdgeInsets.only(left: 16,right: 16),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: <Widget>[
-          Text(
+         Expanded(
+           flex: 1,
+           child: Text(
             widget.geo,
             style: TextStyle(color: Colors.blue,fontSize: 18),
+            textAlign: TextAlign.start,
           ),
+         ),
           FlatButton(
             color: Colors.blue,
             shape: RoundedRectangleBorder(

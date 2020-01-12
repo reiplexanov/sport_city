@@ -26,8 +26,8 @@ class _MyCreateNameDate extends State<MyCreateNameDate> {
     return Padding(
       padding: EdgeInsets.all(0),
       child: Container(
-        width: widget.sizeScreen.width / 2 + 16,
-        height: widget.sizeScreen.height * 0.2,
+        width:  MediaQuery.of(context).size.width / 2,
+        height: MediaQuery.of(context).size.height * 0.2,
         child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -59,7 +59,7 @@ class _MyCreateNameDate extends State<MyCreateNameDate> {
                     borderRadius: BorderRadius.circular(25.0),
                     borderSide: BorderSide(
                       color: Colors.blue,
-                      width: 1.5,
+                      width: 2.5,
                     )
                   ),
                   filled: true,

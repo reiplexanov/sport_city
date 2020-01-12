@@ -5,10 +5,8 @@ class MyInfoPlatform extends StatefulWidget {
   MyInfoPlatform({
     Key key, 
     this.info,
-    this.sizeScreen
   }) : super(key:key);
 
-  final sizeScreen;
   String info;
 
   @override
@@ -33,18 +31,7 @@ class _MyInfoPlatform extends State<MyInfoPlatform>{
   }
 
   changeText(){
-    /*
-    хуйня не работает как надо 
-    */
-
-    // String text = _controller.text;
-    // this.tag = '';
-    // for (int i = 0;i< text.length;i++ ){
-    //     if (text[i] == '#'){
-    //       print(this.tag);
-    //       this.tag = this.tag + text.substring(text.indexOf('#',i),text.indexOf(' ',i)) + ' ';
-    //     }
-    // }
+    
   }
 
   @override
@@ -57,7 +44,7 @@ class _MyInfoPlatform extends State<MyInfoPlatform>{
         right: 16
       ),
       child: Container(
-        height: widget.sizeScreen.height / 5,
+        height: MediaQuery.of(context).size.height / 5,
         child: TextFormField(
         controller: _controller,
         maxLines: 8,
@@ -74,7 +61,7 @@ class _MyInfoPlatform extends State<MyInfoPlatform>{
               borderRadius: BorderRadius.circular(10.0),
               borderSide: BorderSide(
                 color: Colors.blue,
-                width: 1.5,
+                width: 2.5,
               )
             ),
             labelText: 'Описание',
