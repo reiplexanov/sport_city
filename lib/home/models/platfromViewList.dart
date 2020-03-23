@@ -1,0 +1,1 @@
+enum PlatformViewList {news,best,near}
